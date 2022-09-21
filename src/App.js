@@ -1,10 +1,15 @@
 import './App.css';
-import Countrylist from './components/Countrylist';
+import { lazy, Suspense } from 'react';
+
+import Loading from './components/Loading';
+const Countrylist = lazy(() => import("./components/Countrylist"));
 
 function App() {
   return (
-    <Countrylist/>
-  )
+    <Suspense fallback={<Loading/>}>
+      <Countrylist />
+    </Suspense>
+  );
 }
 
 export default App;
